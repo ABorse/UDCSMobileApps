@@ -16,11 +16,11 @@ class CollectionViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         collectionView.dataSource = self
-        collectionView.delegate = self
         fetchData()
     }
-    
+    // For custom transitions, collectionView.delegate is replaced by this prepare for segue function
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        // check if this is the segue name defined on the storyboard
         if segue.identifier == "segue" {
             let photoViewController = segue.destination as! PhotoViewController
             let browserCell = sender as! BrowserCell
@@ -61,13 +61,4 @@ extension CollectionViewController: UICollectionViewDataSource {
     }
     
     
-}
-extension CollectionViewController: UICollectionViewDelegate {
-    // Once a cell is selected, show the detailed photo viewer page
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let photoViewController = storyboard.instantiateViewController(withIdentifier: "PhotoViewController") as! PhotoViewController
-        photoViewController.photo = photos[indexPath.item]
-        present(photoViewController, animated: true, completion: nil)
-    }
 }
