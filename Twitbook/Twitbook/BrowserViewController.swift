@@ -60,11 +60,11 @@ class BrowserViewController: UIViewController {
                 for message in messages {
                     if(message.from == self.user) {
                         self.dmessages.append(message)
-                        //self.messages.append(message.message)
+                        self.messages.append(message.message)
                     }
                 }
                 self.dmessages.sort {$0.message.date > $1.message.date}
-                //self.messages.sort {$0.date > $1.date}
+                self.messages.sort {$0.date > $1.date}
                 self.tableview.reloadData()
             }
         }
