@@ -6,7 +6,7 @@
 //  Copyright © 2017 aborse. All rights reserved.
 //
 
-import UIKit
+import UIKit
 
 class ImageService  {
     
