@@ -29,6 +29,8 @@ class NewMessageViewController: UIViewController {
         }
     }
     
+    
+    
     @IBAction func submitButtonTapped(_ sender: Any) {
         guard let text = textView.text else {return}
         let imgURL = URL(string: imgField.text!) ?? nil
