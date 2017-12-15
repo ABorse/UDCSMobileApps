@@ -14,6 +14,8 @@ class LeaderboardViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        // Load the leaderboard
+        ScoreTable.table.get()
         tableView.dataSource = self        
     }
     
@@ -27,7 +29,6 @@ class LeaderboardViewController: UIViewController {
 extension LeaderboardViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         let num = ScoreTable.table.scores.count
-        print(num)
         return num
     }
     
