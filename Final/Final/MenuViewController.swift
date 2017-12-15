@@ -13,7 +13,6 @@ class MenuViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setBackground()
-        ScoreTable.table.get()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -21,13 +20,8 @@ class MenuViewController: UIViewController {
         self.navigationController?.isNavigationBarHidden = true
     }
     
-//    @IBAction func playButtonTapped(_ sender: Any) {
-//        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-//        let gamevc = storyboard.instantiateViewController(withIdentifier: "Game") as! GameViewController
-//        navigationController?.pushViewController(gamevc, animated: true)
-//    }
-    
     @IBAction func leaderButtonTapped(_ sender: Any) {
+        // Go to the leaderboard screen
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let leadervc = storyboard.instantiateViewController(withIdentifier: "Leaderboard") as! LeaderboardViewController
         navigationController?.pushViewController(leadervc, animated: true)
