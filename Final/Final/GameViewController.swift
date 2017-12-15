@@ -60,10 +60,3 @@ class GameViewController: UIViewController {
         }
     }
 }
-
-extension GameViewController: UITextFieldDelegate {
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        textField.resignFirstResponder()
-        return true
-    }
-}
