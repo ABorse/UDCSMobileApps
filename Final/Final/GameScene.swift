@@ -12,6 +12,7 @@ import GameplayKit
 
 class GameScene: SKScene, SKPhysicsContactDelegate {
     
+    // Define physics body categories for testing collisions
     struct Category {
         static let N: UInt32 = 0b00
         static let E: UInt32 = 0b01
@@ -19,7 +20,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         static let M: UInt32 = 0b11
     }
 
-    
     private var earth = SKLabelNode()
     private var healthBar = SKShapeNode()
     private var scoreLabel = SKLabelNode()
@@ -34,13 +34,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         physicsWorld.gravity = CGVector.zero
         physicsWorld.contactDelegate = self
         
-        //Create and postion Health bar and node
+        //Create and postion Health bar node
         let rect = CGRect(x: 0, y: 0, width: (0.75*view.frame.width), height: view.frame.height/20)
         self.healthBar = SKShapeNode(rect: rect)
         self.healthBar.fillColor = SKColor.green
         self.healthBar.position = CGPoint(x: view.frame.width/8, y: view.frame.height - 10)
-        
-        //Add healthBar node to scene
         self.addChild(self.healthBar)
 
         //Create and position Earth Node
@@ -63,7 +61,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         self.run(SKAction.repeatForever(SKAction.sequence([SKAction.wait(forDuration: 1.0),
                                                            rotate])))
         
-        //Endlessly spawn in new asteroids, with a delay
+        //Define asteroid spawning actions
         let spawn1 = SKAction.repeat(SKAction.sequence([SKAction.run(addAsteroid),
                                                        SKAction.wait(forDuration: 2.0)]),
                                     count: 15)
@@ -73,7 +71,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         let spawn3 = SKAction.repeatForever(SKAction.sequence([SKAction.run(addAsteroid),
                                                                SKAction.wait(forDuration: 0.75)]))
         
-        //Every so often, increase spawn rates
+        //Attach asteroid spawning actions to scene
         self.run(SKAction.sequence([spawn1, spawn2, spawn3]))
         }
     
@@ -87,9 +85,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         else {
             self.earth.text = "🌎"
         }
-        
         self.rotation = (self.rotation + 1) % 3
-        
     }
     
     func addAsteroid() {
@@ -143,6 +139,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     func addExplosion() -> SKAction {
+        // Once a missle reaches its destination or hits an asteroid
+        // it explodes, expanding and fading, then disappearing
         let remove = SKAction.removeFromParent()
         let fade = SKAction.fadeOut(withDuration: 0.25)
         let expand = SKAction.scale(to: 5, duration: 0.25)
@@ -157,24 +155,18 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         if let t = touches.first {
             let loc = t.location(in: self)
-            let nodes = self.nodes(at: loc)
-            if(self.isPaused == false) {
-                self.launchMissle(pos: loc)
-            }
-            else {
-                for node in nodes {
-                    if(node.name == "menuButton") {
-                        menuButtonTapped()
-                    }
-                }
-            }
+            self.launchMissle(pos: loc)
         }
     }
     
     func earthHit(ast: SKLabelNode) {
+        // Remove the asteroid from the scene
         ast.removeFromParent()
+        
+        // Calculate remaining health
         self.health = rules.game.earthHit(health: self.health, ast: ast)
         if(self.health > 0) {
+            // Continue the game, updating health bar to reflect current health
             let ratio = CGFloat(self.health / 100)
             let pos = self.healthBar.position
             let rect = CGRect(x: 0, y: 0, width: ratio * self.healthBar.frame.width, height: self.healthBar.frame.height)
@@ -185,6 +177,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             self.addChild(self.healthBar)
         }
         else {
+            // Game over, stop asteroid spawning and display game over screen
             self.isPaused = true
             self.removeAllChildren()
             displayGameOver()
@@ -193,7 +186,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     func displayGameOver() {
         
-        //Testing UI menu button
+        //Add button to submit score and return to menu
         let button = UIButton()
         button.frame = CGRect(x: self.size.width/4, y: self.size.height - 60, width: self.size.width/2, height: self.size.height/10)
         button.backgroundColor = #colorLiteral(red: 0.01680417731, green: 0.1983509958, blue: 1, alpha: 1)
@@ -203,7 +196,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         button.addTarget(self, action: #selector(menuButtonTapped), for: .touchUpInside)
         self.view?.addSubview(button)
         
-        // Score Label
+        //Add Score Label to scene
         self.scoreLabel.text = String(self.score)
         self.scoreLabel.fontSize = 42
         self.scoreLabel.fontColor = SKColor.white
@@ -212,11 +205,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         self.scoreLabel.position = CGPoint(x: posx, y: posy)
         self.addChild(self.scoreLabel)
         
-        //Name entry field
+        //Add name entry field to view
         self.nameField.frame = CGRect(x: self.size.width/4, y: CGFloat(60), width: self.size.width/2, height: self.size.height/10)
         self.nameField.placeholder = "Enter your name"
         self.nameField.backgroundColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
-        self.nameField.textColor = #colorLiteral(red: 0.9999960065, green: 1, blue: 1, alpha: 1)
+        self.nameField.textColor = #colorLiteral(red: 0.75, green: 0.75, blue: 0.75, alpha: 1)
         self.nameField.font = UIFont(name: "Copperplate", size: 42)
         self.nameField.delegate = self
         self.view?.addSubview(self.nameField)
@@ -227,6 +220,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             let score = self.score
             ScoreTable.table.save(name: name, score: score)
             self.removeFromParent()
+            
+            // To return to menu, remove all children from the navigation controller
+            // then add menu screen 
             let nav = self.view?.window?.rootViewController as! UINavigationController
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
             let menu = storyboard.instantiateViewController(withIdentifier: "Menu") as! MenuViewController
@@ -237,11 +233,15 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     func missleHit(missle: SKShapeNode, ast: SKLabelNode) {
+        // Remove the asteroid
         ast.removeFromParent()
+        // Stop the missle's flight
         missle.removeAllActions()
+        // Add explosion
         let explode = addExplosion()
         missle.run(explode)
         DispatchQueue.main.async {
+            // Update the score 
             self.score = rules.game.asteroidDestroyed(score: self.score, ast: ast)
         }
     }
@@ -250,6 +250,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         var body1: SKPhysicsBody
         var body2: SKPhysicsBody
         
+        // Bodies are given in random order, so sort bodies
         if(contact.bodyA.categoryBitMask < contact.bodyB.categoryBitMask) {
             body1 = contact.bodyA
             body2 = contact.bodyB
@@ -279,6 +280,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 }
 
 extension GameScene: UITextFieldDelegate {
+    // Add delegate so name entry text field will dismiss keyboard
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true
