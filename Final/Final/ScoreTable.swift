@@ -15,20 +15,15 @@ class ScoreTable {
     var scores: [NSManagedObject] = []
     
     func save(name: String, score: Int32) {
-        guard let appDelegate =
-            UIApplication.shared.delegate as? AppDelegate else {
-                return
-        }
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {return}
         
-        let managedContext =
-            appDelegate.persistentContainer.viewContext
+        let managedContext = appDelegate.persistentContainer.viewContext
         
-        let entity =
-            NSEntityDescription.entity(forEntityName: "Entry",
-                                       in: managedContext)!
+        let entity = NSEntityDescription.entity(forEntityName: "Entry",
+                                                in: managedContext)!
         
         let entry = NSManagedObject(entity: entity,
-                                     insertInto: managedContext)
+                                    insertInto: managedContext)
         
         // 3
         entry.setValue(name, forKeyPath: "name")
@@ -46,13 +41,9 @@ class ScoreTable {
     }
     
     func get() {
-        guard let appDelegate =
-            UIApplication.shared.delegate as? AppDelegate else {
-                return
-        }
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {return}
         
-        let managedContext =
-            appDelegate.persistentContainer.viewContext
+        let managedContext = appDelegate.persistentContainer.viewContext
         
         let fetchRequest =
             NSFetchRequest<NSManagedObject>(entityName: "Entry")
