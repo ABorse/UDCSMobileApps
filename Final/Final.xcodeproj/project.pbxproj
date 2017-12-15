@@ -7,8 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B95F8CC31FE2E83F00CA9CA8 /* Final.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B95F8CC11FE2E83F00CA9CA8 /* Final.xcdatamodeld */; };
+		B95F8CE81FE2ECB700CA9CA8 /* ScoreTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B95F8CE71FE2ECB700CA9CA8 /* ScoreTable.swift */; };
+		B95F8CEA1FE2EFAB00CA9CA8 /* LeaderBoardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B95F8CE91FE2EFAB00CA9CA8 /* LeaderBoardCell.swift */; };
+		B9DF28291FE1C41E003607BC /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9DF28281FE1C41E003607BC /* GameScene.swift */; };
+		B9DF28AF1FE1DD45003607BC /* MissleTrail.sks in Resources */ = {isa = PBXBuildFile; fileRef = B9DF28AE1FE1DD45003607BC /* MissleTrail.sks */; };
+		B9E002881FE05BC50038C4F8 /* Rules.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9E002871FE05BC50038C4F8 /* Rules.swift */; };
+		B9E0028A1FE05C090038C4F8 /* Asteroid.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9E002891FE05C090038C4F8 /* Asteroid.swift */; };
 		B9EB37D71FD750A1007453C4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9EB37D61FD750A1007453C4 /* AppDelegate.swift */; };
-		B9EB37D91FD750A1007453C4 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9EB37D81FD750A1007453C4 /* ViewController.swift */; };
 		B9EB37DC1FD750A1007453C4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B9EB37DA1FD750A1007453C4 /* Main.storyboard */; };
 		B9EB37DE1FD750A1007453C4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B9EB37DD1FD750A1007453C4 /* Assets.xcassets */; };
 		B9EB37E11FD750A1007453C4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B9EB37DF1FD750A1007453C4 /* LaunchScreen.storyboard */; };
@@ -17,7 +23,6 @@
 		B9EB38051FD75119007453C4 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9EB38041FD75119007453C4 /* MenuViewController.swift */; };
 		B9EB38071FD75151007453C4 /* LeaderboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9EB38061FD75151007453C4 /* LeaderboardViewController.swift */; };
 		B9EB38091FD75161007453C4 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9EB38081FD75161007453C4 /* GameViewController.swift */; };
-		B9EB380B1FD7522B007453C4 /* WebService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9EB380A1FD7522B007453C4 /* WebService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,9 +43,15 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		B95F8CC21FE2E83F00CA9CA8 /* Final.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Final.xcdatamodel; sourceTree = "<group>"; };
+		B95F8CE71FE2ECB700CA9CA8 /* ScoreTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreTable.swift; sourceTree = "<group>"; };
+		B95F8CE91FE2EFAB00CA9CA8 /* LeaderBoardCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaderBoardCell.swift; sourceTree = "<group>"; };
+		B9DF28281FE1C41E003607BC /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
+		B9DF28AE1FE1DD45003607BC /* MissleTrail.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = MissleTrail.sks; sourceTree = "<group>"; };
+		B9E002871FE05BC50038C4F8 /* Rules.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rules.swift; sourceTree = "<group>"; };
+		B9E002891FE05C090038C4F8 /* Asteroid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Asteroid.swift; sourceTree = "<group>"; };
 		B9EB37D31FD750A1007453C4 /* Final.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Final.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B9EB37D61FD750A1007453C4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		B9EB37D81FD750A1007453C4 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		B9EB37DB1FD750A1007453C4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		B9EB37DD1FD750A1007453C4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B9EB37E01FD750A1007453C4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -54,7 +65,6 @@
 		B9EB38041FD75119007453C4 /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		B9EB38061FD75151007453C4 /* LeaderboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaderboardViewController.swift; sourceTree = "<group>"; };
 		B9EB38081FD75161007453C4 /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
-		B9EB380A1FD7522B007453C4 /* WebService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,12 +115,17 @@
 		B9EB37D51FD750A1007453C4 /* Final */ = {
 			isa = PBXGroup;
 			children = (
+				B9E002891FE05C090038C4F8 /* Asteroid.swift */,
 				B9EB37D61FD750A1007453C4 /* AppDelegate.swift */,
+				B95F8CC11FE2E83F00CA9CA8 /* Final.xcdatamodeld */,
+				B9DF28281FE1C41E003607BC /* GameScene.swift */,
 				B9EB38081FD75161007453C4 /* GameViewController.swift */,
+				B95F8CE91FE2EFAB00CA9CA8 /* LeaderBoardCell.swift */,
 				B9EB38061FD75151007453C4 /* LeaderboardViewController.swift */,
+				B9DF28AE1FE1DD45003607BC /* MissleTrail.sks */,
 				B9EB38041FD75119007453C4 /* MenuViewController.swift */,
-				B9EB37D81FD750A1007453C4 /* ViewController.swift */,
-				B9EB380A1FD7522B007453C4 /* WebService.swift */,
+				B9E002871FE05BC50038C4F8 /* Rules.swift */,
+				B95F8CE71FE2ECB700CA9CA8 /* ScoreTable.swift */,
 				B9EB37DA1FD750A1007453C4 /* Main.storyboard */,
 				B9EB37DD1FD750A1007453C4 /* Assets.xcassets */,
 				B9EB37DF1FD750A1007453C4 /* LaunchScreen.storyboard */,
@@ -247,6 +262,7 @@
 				B9EB37E11FD750A1007453C4 /* LaunchScreen.storyboard in Resources */,
 				B9EB37DE1FD750A1007453C4 /* Assets.xcassets in Resources */,
 				B9EB37DC1FD750A1007453C4 /* Main.storyboard in Resources */,
+				B9DF28AF1FE1DD45003607BC /* MissleTrail.sks in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -271,10 +287,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B9EB380B1FD7522B007453C4 /* WebService.swift in Sources */,
+				B9E002881FE05BC50038C4F8 /* Rules.swift in Sources */,
 				B9EB38091FD75161007453C4 /* GameViewController.swift in Sources */,
-				B9EB37D91FD750A1007453C4 /* ViewController.swift in Sources */,
+				B9DF28291FE1C41E003607BC /* GameScene.swift in Sources */,
+				B9E0028A1FE05C090038C4F8 /* Asteroid.swift in Sources */,
+				B95F8CC31FE2E83F00CA9CA8 /* Final.xcdatamodeld in Sources */,
+				B95F8CEA1FE2EFAB00CA9CA8 /* LeaderBoardCell.swift in Sources */,
 				B9EB38051FD75119007453C4 /* MenuViewController.swift in Sources */,
+				B95F8CE81FE2ECB700CA9CA8 /* ScoreTable.swift in Sources */,
 				B9EB38071FD75151007453C4 /* LeaderboardViewController.swift in Sources */,
 				B9EB37D71FD750A1007453C4 /* AppDelegate.swift in Sources */,
 			);
@@ -570,6 +590,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		B95F8CC11FE2E83F00CA9CA8 /* Final.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				B95F8CC21FE2E83F00CA9CA8 /* Final.xcdatamodel */,
+			);
+			currentVersion = B95F8CC21FE2E83F00CA9CA8 /* Final.xcdatamodel */;
+			path = Final.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = B9EB37CB1FD750A1007453C4 /* Project object */;
 }
