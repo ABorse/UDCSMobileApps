@@ -11,13 +11,11 @@ import SpriteKit
 
 struct asteroid {
     var size: CGFloat
-//    var start: CGPoint
-//    var dest: CGPoint
-//    var speed: Double
     var sprite = SKLabelNode()
     
     init(size: CGFloat, start: CGPoint, dest: CGPoint, speed: Double) {
         self.size = size
+        // Create the asteroid sprite 
         self.sprite.text = "🌕"
         self.sprite.fontSize = size
         self.sprite.verticalAlignmentMode = SKLabelVerticalAlignmentMode.center
